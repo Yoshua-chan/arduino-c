@@ -1,3 +1,7 @@
+# Visual Studio Code local settings
+
+.vscode
+
 # Prerequisites
 *.d
 
@@ -6,6 +10,7 @@
 *.ko
 *.obj
 *.elf
+*.bin
 
 # Linker output
 *.ilk
