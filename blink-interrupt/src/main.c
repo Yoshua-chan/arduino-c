@@ -5,6 +5,7 @@
     I'm using TIMER 1, because it is 16 bit.
 */
 
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdbool.h>
@@ -14,6 +15,7 @@ ISR(TIMER1_COMPA_vect) {
 }
 
 int main() {
+    
     // Set PORTB5 as output
     DDRB |= (1 << DDB5);
 
@@ -34,18 +36,23 @@ int main() {
 
     // Set the compared value (OCR1A) according to the delay time (0x3D09)
     // 0x3D09 = 15 625 
-    // OCR1A = 0x3D09;
-    OCR1AL = 0x09;
-    OCR1AH = 0x3D;
+    OCR1A = 0x3D09;
+    OCR1AL = 0x12;
+    OCR1AH = 0x7A;
 
     // Trigger an interrupt at every Compare Match
     TIMSK1  |= (1 << OCIE1A);
 
     // Enable interrupts
     sei();
+    
+
+   //PORTB = (1 << PB5);
 
     while(true) {
         // stuff that could be running in a loop, and
         // blink would still work
     }
+
+
 }
